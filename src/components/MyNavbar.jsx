@@ -1,14 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  Navbar,
+  Nav,
+  Container,
+  Form,
+  FormControl,
+  Button,
+} from "react-bootstrap";
+import { FetchMusicData } from "../redux/actions/action";
 
 const MyNavbar = () => {
-  const username = useSelector((state) => state.user.username);
+  const username = useSelector((state) => state.user.user.username);
+  const dispatch = useDispatch();
+
+  const [inputValue, setInputValue] = useState("");
+
+  const handleLogin = () => {
+    dispatch(setUsername(inputValue));
+    setInputValue("");
+  };
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim() !== "") {
+      dispatch(FetchMusicData(searchTerm));
+      setSearchTerm("");
+    }
+  };
 
   return (
     <>
-      {/* Navbar DESKTOP (verticale laterale) */}
+      <Nav className="mt-auto">
+        <Nav.Link disabled>Welcome, {username}</Nav.Link>
+      </Nav>
+      {/* Navbar DESKTOP */}
       <Navbar
         bg="dark"
         variant="dark"
@@ -23,9 +52,33 @@ const MyNavbar = () => {
         }}
       >
         <Navbar.Brand as={NavLink} to="/" className="mb-4">
-          🎵 iMusic Clone
+          iMusic Clone
         </Navbar.Brand>
-        <Nav className="flex-column w-100">
+        {/* SEARCH FORM DESKTOP */}
+        <Form className="w-100" onSubmit={handleSearch}>
+          <FormControl
+            type="search"
+            placeholder="Cerca canzoni..."
+            className="mb-2"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <Button variant="outline-light" size="sm" type="submit">
+            Cerca
+          </Button>
+        </Form>
+        <Form inline className="ms-auto d-flex">
+          <Form.Control
+            type="text"
+            placeholder="Inserisci il tuo nome"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+          <Button onClick={handleLogin} className="ms-2">
+            Accedi
+          </Button>
+        </Form>
+        <Nav className="flex-column w-100 mb-3">
           <Nav.Link as={NavLink} to="/">
             Home
           </Nav.Link>
@@ -36,19 +89,29 @@ const MyNavbar = () => {
             Radio
           </Nav.Link>
         </Nav>
-        <Nav className="mt-auto">
-          <Nav.Link disabled>Welcome, {username}</Nav.Link>
-        </Nav>
       </Navbar>
 
-      {/* Navbar MOBILE (orizzontale in alto) */}
+      {/* Navbar MOBILE */}
       <Navbar bg="dark" variant="dark" expand="lg" className="d-lg-none px-3">
         <Container fluid>
           <Navbar.Brand as={NavLink} to="/">
-            🎵 iMusic Clone
+            iMusic Clone
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="navbar-nav">
+            {/* SEARCH FORM MOBILE */}
+            <Form className="d-flex my-2" onSubmit={handleSearch}>
+              <FormControl
+                type="search"
+                placeholder="Cerca..."
+                className="me-2"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <Button variant="outline-light" size="sm" type="submit">
+                🔍
+              </Button>
+            </Form>
             <Nav className="me-auto">
               <Nav.Link as={NavLink} to="/">
                 Home
@@ -60,6 +123,7 @@ const MyNavbar = () => {
                 Radio
               </Nav.Link>
             </Nav>
+
             <Nav>
               <Nav.Link disabled>Welcome, {username}</Nav.Link>
             </Nav>

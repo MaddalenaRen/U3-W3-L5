@@ -1,6 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import reducers from "../reducers"
+import { combineReducers } from "redux";
+import songReducer from "../reducers/songReducer";
+import userReducer from "../reducers/userReducer";
+
+const rootReducer = combineReducers({
+  songs: songReducer,
+  user: userReducer,
+});
 
 export const store = configureStore({
-    reducer: reducers,
-  });
+  reducer: rootReducer,
+});
