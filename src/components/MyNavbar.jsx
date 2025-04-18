@@ -67,17 +67,6 @@ const MyNavbar = () => {
             Cerca
           </Button>
         </Form>
-        <Form inline className="ms-auto d-flex">
-          <Form.Control
-            type="text"
-            placeholder="Inserisci il tuo nome"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-          <Button onClick={handleLogin} className="ms-2">
-            Accedi
-          </Button>
-        </Form>
         <Nav className="flex-column w-100 mb-3">
           <Nav.Link as={NavLink} to="/">
             Home
