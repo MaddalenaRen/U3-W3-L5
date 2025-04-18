@@ -47,7 +47,7 @@ const Home = () => {
 
       {/* --- Sezione StaticCard --- */}
       <h2 className="mt-4">Le mie playlist</h2>
-      <Row xs={1} sm={2} md={3} lg={4} xl={5} className="gx-1 gy-2 mb-5">
+      <Row xs={2} sm={2} md={3} lg={4} xl={5} className="gx-1 gy-2 mb-5">
         <Col>
           <StaticCard image={img1} title="Prologo con Abuelo" />
         </Col>
@@ -70,7 +70,7 @@ const Home = () => {
 
       {/* --- Sezione DinamicCard --- */}
       <h2>Nuove Uscite</h2>
-      <Row xs={1} sm={2} md={3} lg={4} xl={5} className="gx-1 gy-2">
+      <Row xs={2} sm={2} md={3} lg={4} xl={5} className="gx-1 gy-2">
         {musicData.length > 0 ? (
           musicData.map((m) => (
             <Col key={m.id}>
