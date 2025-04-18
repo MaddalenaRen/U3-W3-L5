@@ -6,7 +6,6 @@ function DinamicCard({ image, title, subtitle }) {
       className="mb-2 shadow-sm"
       style={{
         width: "100%",
-        maxWidth: "160px",
       }}
     >
       <Card.Img variant="top" src={image} />
@@ -18,10 +17,35 @@ function DinamicCard({ image, title, subtitle }) {
           display: "-webkit-box",
           WebkitLineClamp: "2",
           WebkitBoxOrient: "vertical",
+          fontSize: "15px",
         }}
       >
-        <Card.Title>{title}</Card.Title>
-        <Card.Subtitle>{subtitle}</Card.Subtitle>
+        <Card.Title
+          style={{
+            height: "20px",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: "2",
+            WebkitBoxOrient: "vertical",
+            fontSize: "17px",
+          }}
+        >
+          {title}
+        </Card.Title>
+        <Card.Subtitle
+          style={{
+            maxHeight: "150px",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: "2",
+            WebkitBoxOrient: "vertical",
+            fontSize: "15px",
+          }}
+        >
+          {subtitle}
+        </Card.Subtitle>
       </Card.Body>
     </Card>
   );

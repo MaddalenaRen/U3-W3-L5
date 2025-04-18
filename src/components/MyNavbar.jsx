@@ -15,13 +15,6 @@ const MyNavbar = () => {
   const username = useSelector((state) => state.user.user.username);
   const dispatch = useDispatch();
 
-  const [inputValue, setInputValue] = useState("");
-
-  const handleLogin = () => {
-    dispatch(setUsername(inputValue));
-    setInputValue("");
-  };
-
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (e) => {

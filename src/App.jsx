@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import MyNavbar from "./components/MyNavbar";
 import { Row, Col } from "react-bootstrap";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Col xs={12} lg={10}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </Col>
       </Row>

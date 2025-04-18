@@ -5,7 +5,15 @@ function BannerCard({ image, title, text }) {
     <Card>
       <Card.Body>
         <Card.Text>{text}</Card.Text>
-        <Card.Title>{title}</Card.Title>
+        <Card.Title
+          style={{
+            maxHeight: "20px",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {title}
+        </Card.Title>
       </Card.Body>
       <Card.Img variant="top" src={image} />
     </Card>

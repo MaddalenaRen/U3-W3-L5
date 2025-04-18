@@ -6,7 +6,6 @@ function StaticCard({ image, title }) {
       className="mb-2 shadow-sm"
       style={{
         width: "100%",
-        maxWidth: "160px",
       }}
     >
       <Card.Img variant="top" src={image} />
@@ -20,7 +19,20 @@ function StaticCard({ image, title }) {
           WebkitBoxOrient: "vertical",
         }}
       >
-        <Card.Title>{title}</Card.Title>
+        <Card.Title
+          style={{
+            height: "20px",
+
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: "2",
+            WebkitBoxOrient: "vertical",
+            fontSize: "15px",
+          }}
+        >
+          {title}
+        </Card.Title>
       </Card.Body>
     </Card>
   );

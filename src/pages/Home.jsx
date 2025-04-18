@@ -12,9 +12,9 @@ import img5 from "../assets/images/2e.png";
 import BannerCard from "../components/BannerCard";
 import img6 from "../assets/images/1a.png";
 import img7 from "../assets/images/1b.png";
-
+import { Link } from "react-router-dom";
 const Home = () => {
-  const username = useSelector((s) => s.user.username);
+  const username = useSelector((s) => s.user.user.username);
   const musicData = useSelector((s) => s.songs.musicData);
   const dispatch = useDispatch();
 
@@ -25,6 +25,13 @@ const Home = () => {
   return (
     <Container className="mt-4">
       <h1>Benvenuto {username}</h1>
+      {!username && (
+        <div className="text-end mb-3">
+          <Link to="/login">
+            <button className="btn btn-primary">Accedi</button>
+          </Link>
+        </div>
+      )}
       <h2 className="mt-4">Novità</h2>
       <Row className="gx-2 gy-3">
         {" "}
