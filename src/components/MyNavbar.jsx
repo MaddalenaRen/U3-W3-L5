@@ -42,9 +42,9 @@ const MyNavbar = () => {
         bg="dark"
         variant="dark"
         expand="lg"
-        className="d-none d-lg-flex flex-column align-items-start p-3"
+        className="d-none d-lg-flex flex-column align-items-start p-3 position-relative"
         style={{
-          height: "100vh",
+          height: "100%",
           width: "220px",
           position: "fixed",
           top: 0,
